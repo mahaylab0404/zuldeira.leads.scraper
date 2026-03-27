@@ -1,0 +1,31 @@
+{
+    "actorSpecification": 1,
+    "name": "zuldeira-south-fl-leads",
+    "title": "South Florida Business Leads Scraper",
+    "description": "Scrapes lead data (names, phones, websites) for salons and firms in Miami, Broward, and Palm Beach.",
+    "version": "0.0.1",
+    "main": "python3 -m src",
+    "dockerfile": "./Dockerfile",
+    "input": {
+        "title": "Lead Search Configuration",
+        "type": "object",
+        "schemaVersion": 1,
+        "properties": {
+            "searchQueries": {
+                "title": "Search Queries",
+                "description": "Enter business types + location. Example: 'nail salon Miami FL'.",
+                "type": "array",
+                "items": { "type": "string" },
+                "default": ["nail salon Miami FL", "nail salon Broward FL", "nail salon Palm Beach FL"]
+            },
+            "maxResults": {
+                "title": "Max Results",
+                "description": "Total leads to collect per search query.",
+                "type": "integer",
+                "default": 50,
+                "minimum": 1
+            }
+        },
+        "required": ["searchQueries"]
+    }
+}
